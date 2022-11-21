@@ -16,6 +16,7 @@ perm = permutations(num_list, 2) #순열
 # 조합
 for i in comb :
     print(i , end='')
+    
 # 조합 출력
 # (5, 2)(5, 8)(5, 3)(2, 8)(2, 3)(8, 3)한
 # 조합은 안에 있는 N개가 한번이라도 같이 묶였으면 출력X
