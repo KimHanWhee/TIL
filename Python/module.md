@@ -2,7 +2,7 @@ Python Module
 =========================
 # 순열과 조합!!(**combination**,permutation)
 
-### import from itertools import combinations
+### from itertools import combinations
 
 ### combinations/permutations([리스트], 몇개 묶을건지!)
 
