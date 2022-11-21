@@ -78,9 +78,9 @@ Python
                 ```python
                 for i in range(5) :
                 	if i == 3 :         #i가 3이 될경우 해당 코드 실행
-                		break             #break가 실행되면 반복문이 끝나버림.
+                    break               #break가 실행되면 반복문이 끝나버림.
                 	print(i)            #break가 실행되면 아래에 있는 이 코드는 실행이 되지않고
-                											#0~5중 3이후의 숫자를 제외한 숫자만 출력됨.
+                                        #0~5중 3이후의 숫자를 제외한 숫자만 출력됨.
                 ```
                 
             - **continue**
@@ -89,9 +89,9 @@ Python
                 ```python
                 for i in range(5) :
                 	if i == 3 :         #i가 3이 될경우 해당 코드 실행
-                		continue          #continue가 실행되면 코드는 반복문 처음으로 돌아감.
+                		continue        #continue가 실행되면 코드는 반복문 처음으로 돌아감.
                 	print(i)            #continue가 실행되면 아래에 있는 이 코드는 실행이 되지않고
-                											#처음으로 돌아가서 0~5중 3을 제외한 숫자가 출력됨
+                						#처음으로 돌아가서 0~5중 3을 제외한 숫자가 출력됨
                 ```
                 
     - **리스트**
