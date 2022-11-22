@@ -1,5 +1,70 @@
 Python02 (11/22)
 ======================
+- **문자열**
+    - **함수**
+        - **str.count(문자)**
+            - 지정한 문자 개수 반환
+            
+            ```python
+            a = 'hobby bc'
+            print(a.count('b'))
+            
+            # 출력
+            # 3
+            ```
+            
+        - **str.index(문자)**
+            - 지정한 문자가 처음 나오는 인덱스 반환
+            
+            ```python
+            a = 'hobby bc'
+            print(a.index('b'))
+            
+            # 출력
+            # 2
+            ```
+            
+        - ********str.join(문자)**
+            - 문자열이 지정한 문자 사이사이에 들어감
+            
+            ```python
+            it = ':'
+            data = 'abcd'
+            print(it.join(data))
+            
+            # 출력
+            # a:b:c:d
+            ```
+            
+        - **str.strip(제거할 문자)**
+            - 지정한 문자 제거
+            
+            ```python
+            u = "<<<    spam and ham    >>>"
+            print(u.strip('< >'))
+            # 출력
+            # spam and ham
+            ```
+            
+        - **str.replace(문자, 대체할 문자)**
+            - 문자열 중 처음에 지정한 문자를 대체할 문자로 전부 교체
+            
+            ```python
+            u = 'spam and ham'
+            print(u.replace('spam', 'tomato and egg')
+            # 출력
+            # tomato and egg and ham
+            ```
+            
+        - **str.split(구분자)**
+            - 구분자를 기준으로 문자를 나눠 각각 리스트에 저장 구분자 미입력 시 공백을 기준으로 나눔
+            
+            ```python
+            u = 'tomato and egg and ham'
+            print(u.split())
+            # 출력
+            # ['tomato', 'and', 'egg', 'and', 'ham']
+            ```
 - **함수**
     - **def 함수명(받은 매개변수(없을 경우 비워둠)) : {실행 할 코드}**
         
