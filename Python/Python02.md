@@ -33,7 +33,12 @@ Python02 (11/22)
         
     - **람다(lambda)함수**
         - 함수를 간단하게 한 줄로 표현하는 함수
-            - lambda {인자} : 인자 활용 코드
+            - 실행 코드
+                
+                <aside>
+                💡 lambda {인자} : 인자 활용 코드
+                
+                </aside>
                 
                 ```python
                 print((lambda b : 9 * b + 2000) (4)) #4가 b에 할당됨
