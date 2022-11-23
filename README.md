@@ -6,4 +6,4 @@ Today I Learned
 * [Python Module](https://github.com/KimHanWhee/TIL/blob/master/Python/Python_Module.md)
 
 ### Numpy
-* [Numpy] (https://github.com/KimHanWhee/TIL/tree/master/Numpy)
+* [Numpy](https://github.com/KimHanWhee/TIL/tree/master/Numpy)
