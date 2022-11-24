@@ -156,7 +156,7 @@ import numpy as np
         ```
         
 - 그 외…
-    - shape, dtype, size
+    - **shape, dtype, size**
         
         ```python
         import numpy as np
@@ -174,6 +174,29 @@ import numpy as np
         #출력 12
         print(len(Y))  #출력 3  len()함수의 사용의미가 없음
         ```
+    - **sum, average, mean, var, std**
+    
+    ```python
+    import numpy as np
+    
+    a = [175, 177, 179, 181, 183]
+    arr3 = np.array(a)
+    print(arr3)
+    print('총점 = ', np.sum(a))     # 모든 배열값 더하기
+    # 총점 =  895
+    
+    print('평균 = ', np.average(a)) # 배열 값들의 평균
+    print('평균 = ', np.mean(a))    # average보다 mean을 더 많이 씀
+    # 평균 =  179.0
+    
+    print('분산 = ', np.var(a))     # 배열의 분산 구하기
+    # 분산 =  8.0
+    print('표준편차 = ', np.std(a)) # 배열의 표준편차
+    # 표준편차 =  2.8284271247461903
+    
+    print('표준편차 = ', round(np.std(a), 2)) # 표준편차 두자릿수 까지만 출력
+    # 표준편차 =  2.83
+    ```
         
 - ******************************1차원 배열******************************
 
