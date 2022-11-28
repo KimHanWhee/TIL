@@ -1,4 +1,4 @@
-Numpy by.Playdata (2022/11/23)
+Numpy by.Playdata (2022/11/23 ~ 2022/11/28)
 ====================
 # Numpy란?
 
