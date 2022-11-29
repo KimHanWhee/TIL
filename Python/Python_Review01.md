@@ -22,23 +22,23 @@ Python_Review01 (2022/11/29)
 - **************scripts**************
     - 파이썬 관련 명령어를 사용할 수 있게 해주는 프로그램 (ex. pip)
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/70ddd7be-d362-4f53-98ed-2c3f8cc404a5/Untitled.png)
+        ![image](https://user-images.githubusercontent.com/84313936/204492527-c7ef731f-535f-4bf7-8c1c-e7e0eeb792c7.png)
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30ac2470-3953-4f49-8187-44089dfbdf50/Untitled.png)
+        ![image](https://user-images.githubusercontent.com/84313936/204492646-15f40811-67bc-47d3-befb-ebc35bccd377.png)
         
 
 ## pycharm 설치
 
 ### File/Setting
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/89834626-4f85-4a8e-a386-4aac4aa99ba8/Untitled.png)
+![image](https://user-images.githubusercontent.com/84313936/204492805-ab319528-230d-48ba-8371-98eaa7edfee4.png)
 
 - Project ⇒ python interpreter
     - 사용가능한 패키지 확인 & ‘+’버튼으로 패키지 추가 가능
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db2e1ced-0788-47c4-9cdb-870574aacbb2/Untitled.png)
+        ![image](https://user-images.githubusercontent.com/84313936/204493084-aa994096-599a-4708-900c-6007b7c455ef.png)
         
-        ![제목 없음.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bae91fc0-c012-4917-b511-a7f3682db3ca/%EC%A0%9C%EB%AA%A9_%EC%97%86%EC%9D%8C.png)
+        ![image](https://user-images.githubusercontent.com/84313936/204493151-c20cee20-e180-40c8-a1d7-dbd87e39ebf7.png)
         
 
 ### Python
