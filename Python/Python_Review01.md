@@ -17,7 +17,7 @@ Python_Review01 (2022/11/29)
     
     파이썬을 실행 하기위한 프로그램
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6c92e6e9-43ad-454e-890a-235ba3c8ed8c/Untitled.png)
+    ![image](https://user-images.githubusercontent.com/84313936/204492230-10898da2-2e9a-4187-8d9d-8c54fe42f69d.png)
     
 - **************scripts**************
     - 파이썬 관련 명령어를 사용할 수 있게 해주는 프로그램 (ex. pip)
