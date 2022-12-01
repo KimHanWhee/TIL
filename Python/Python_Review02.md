@@ -1003,7 +1003,7 @@ print(x)
         result = 10 / num
         print("결과값 : ", result)
     except ZeroDivisionError as e : # 여기서 지정한 zeroDivisionError는 ArithmeticError
-    											   				# 와 같은 부모클래스로도 잡아낼 수 있다 자식클래스는 불가
+    				    # 와 같은 부모클래스로도 잡아낼 수 있다 자식클래스는 불가
         print("0으로 나눌 수 없습니다!", e)
     
     print("end - 정상종료")
