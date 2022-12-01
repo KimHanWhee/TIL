@@ -555,7 +555,7 @@ print(x)
     
     </aside>
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b6a41659-a5e4-4346-a494-8e71890034dd/Untitled.png)
+    ![image](https://user-images.githubusercontent.com/84313936/204997927-0886b5eb-564c-44d6-b558-29ec4f7fbd25.png)
     
     - 클래스를 **외부**에서 참조
         - s.변수, student().변수
