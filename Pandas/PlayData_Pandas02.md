@@ -1086,14 +1086,27 @@ print(df)
             - df의 행과 열이 한번에 함수에 적용됨
     
     <aside>
-    💡 **Series의 함수들**
-    
-    위 예제들에서 df.*를 df[”컬럼”].* 형식으로 쓰면된다
-    axis=0만 사용가능하다 .
-    가끔 axis자체가 지원이 안되는 함수들도 있으니 유의하자
-    `df.apply()` 같은 경우는 Series의 axis가 지원이 안된다
-    
-    </aside>
+💡 **Series의 함수들**
+
+위 예제들(통계함수, 기본함수)에서 df.~~를 df[”컬럼”].~~ 형식으로 쓰면된다
+axis=0만 사용가능하다 .
+가끔 axis자체가 지원이 안되는 함수들도 있으니 유의하자
+`df.apply()` 같은 경우는 Series의 axis가 지원이 안된다.
+
+```
+1. 정리1
+    df['c1']은 Series 반환
+    df[['c1']]은 DataFrame 반환
+
+2. 정리2
+    df['c1'].apply(np.sum)은 Series에서 값을 하나 추출해서 np.sum에 전달. 전달받은 값을 그대로 반환.
+    따라서 실행값은 원본값과 동일
+
+    df[['c1']].apply(np.sum)은 DataFrame에서 Series 전체값을 np.sum에        전달. 전달받은 Series값을
+    모두 더해서 반환. 따라서 종합연산이 가능함.
+```
+
+</aside>
     
 
 ## Data 수집
