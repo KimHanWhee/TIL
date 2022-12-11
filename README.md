@@ -10,3 +10,6 @@ Today I Learned
 
 ### Pandas
 * [Pandas](https://github.com/KimHanWhee/TIL/tree/master/Pandas)
+
+### DataVisualization
+* [DataVisualization](https://github.com/KimHanWhee/TIL/tree/master/DataVisualization)
