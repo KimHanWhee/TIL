@@ -9,9 +9,7 @@ DataVisualization (2022/12/09)
 3. pandas
     1. matplotlib 기반
 
-## 시각화
-
-### 기본
+## 기본
 
 - ****************************도화지 얻기****************************
     - **************`plt.figure()`**************
@@ -67,7 +65,7 @@ DataVisualization (2022/12/09)
         ```
         
 
-### 선그래프
+## 선그래프
 
 - `**plt.plot()` 함수 이용 또는  `ax.plot()`**
 - ************************************선(line) 또는 마커(marker, point)그릴 때 사용************************************
@@ -177,6 +175,8 @@ DataVisualization (2022/12/09)
         plt.legend()
         ```
         
+        - 예시
+        
         ```python
         plt.plot([1, 4, 6, 3], [1, 2, 3, 4], label="1학년")
         plt.plot([4, 1, 5, 8], [12, 2, 35, 4], label="2학년")
@@ -193,6 +193,8 @@ DataVisualization (2022/12/09)
         plt.plot(...)
         plt.legend(["값1", "값2"])
         ```
+        
+        - 예시
         
         ```python
         plt.plot([1, 4, 6, 3], [1, 2, 3, 4], linestyle="-")
@@ -213,3 +215,147 @@ DataVisualization (2022/12/09)
         ```
         
 - **************타이틀**************
+    - **`plt.title(label="값", loc="center|left|right", pad=30, fontdict=딕셔너리)`**
+        - 지정한 문자와 속성들로 제목 생성됨
+        
+        ```python
+        plt.title("학생 출석현황", loc="right", pad=10)
+        ```
+        
+
+## 막대그래프
+
+- `**plt.bar(x, y) => x는 종류(범주), y는 x범주에 해당되는 데이터 값 지정)**`
+    
+    ```python
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import pandas as pd
+    
+    # 도화지 얻기
+    fig = plt.figure()
+    
+    # 하나의 붓 얻기
+    ax = plt.axes()
+    
+    x = [0, 1, 2] # 범주
+    y = [100, 200, 300] # x 범주에 해당되는 값
+    plt.bar(x, y)
+    
+    plt.show()
+    ```
+    
+- `**plt.barh(x, y)**`
+    - 막대가 가로로 출력
+- ****************`plt.bar()` 속성**
+    
+    ```python
+    plt.bar(x, y,
+            width=0.4,
+            color="aliceblue",
+            align="edge",
+            edgecolor="skyblue",
+            linewidth=2,
+            tick_label=["1G", "2G", "3G"])
+    ```
+    
+- **막대 여러개 쌓기**
+    - 2개
+    
+    ```python
+    x = [0, 1, 2] # 범주
+    y1 = [100, 200, 300] # x 범주에 해당되는 값
+    y2 = [200, 150, 50] # x 범주에 해당되는 값
+    plt.bar(x, y1, label="y1")
+    plt.bar(x, y2, label="y2", bottom=y1)
+    
+    plt.legend()
+    plt.show()
+    ```
+    
+    - 2개 이상
+        - 2개 이상은 깨져서 나오므로 2개를 numpy 벡터연산으로 더해 변수 저장 후 나머지 하나 연결
+    
+    ```python
+    x = [0,1,2] # 범주
+    y1 = [100,200,300] # x에 해당되는 값
+    y2 = [200,150,50]
+    y1_2 = np.array(y1) +np.array(y2)
+    y3 = [50,50,50]
+    
+    plt.bar(x, y1, label="y1")
+    plt.bar(x, y2, label="y2", bottom=y1)
+    plt.bar(x, y3, label="y3", bottom=y1_2)
+    ```
+    
+
+## 산점도 (scatter plot)
+
+- **두 변수간(x, y)의 상관관계를 점(dot)로 표현**
+- **plt.scatter(x, y, s="dot크기", c="색상", alpha="투명도")**
+    
+    ```
+    x = np.random.rand(50)
+    y = np.random.rand(50)
+    size = (40*np.random.rand((50))) **2
+    color = np.random.rand(50)
+    
+    plt.scatter(x,y,s=size,c=color,alpha=0.2) # alpha는 투명도
+    ```
+    
+
+## 파이차트
+
+- ******************************범주(종류)의 구성비율을 원형으로 표현******************************
+- ****************************************************구성비율의 종합은 100****************************************************
+- ****************`**plt.pie()**`****************
+    
+    ```python
+    value = [34, 32, 16, 18] # 총합 100
+    labels = ['바나나', '사과', '귤', '수박']
+    explode = (0.3, 0.1, 0, 0)
+    
+    plt.pie(value,
+            labels=labels,
+            autopct='%1.1f%%',
+            startangle=180,     # 시작 각도 설정
+            counterclock=False, # 기본적으로는 시계방향으로 간다.
+            colors=["red", "blue", "green", "yellow"],
+            explode=explode,
+            shadow=True)
+    ```
+    
+
+## 히스토그램
+
+- **도수분포표**
+    - 특정구간(범위)에 속하는 데이터의 개수를 표현
+- **히스토그램**
+    - 도수분포표를 시각화 한것
+        - 막대그래프는 y값만 고려한다. x는 범주이기 때문에
+        - 히스토그램은 x와 y값 모두 고려한다.
+    
+    ```python
+    weight = [68, 81, 64, 56, 78, 74, 61, 77, 66, 68, 59, 71, 80, 59, 67, 81, 69, 73, 69, 74, 70, 65]
+    print(sorted(weight), len(weight))
+    
+    plt.hist(weight)
+    ```
+    
+- ************************범위의 개수 지정************************
+    - ********`hist(..., bins=값)`********
+        
+        ```python
+        fig, ax = plt.subplots(1, 3)
+        ax[0].hist(weight)
+        ax[1].hist(weight, bins=5)
+        ax[2].hist(weight, bins=8)
+        ```
+        
+    - 추가 속성
+        - **********`**alpha` : 투명도**
+        - `**histtype`**
+            - **`bar`(기본값) : 막대 형태**
+            - **`barstacked` : 여러 데이터가 쌓인 막대 형태**
+            - **`step` : 내부가 비어 윤곽만 있는 막대형태**
+            - **`stepfilled` : 내부가 차있는 막대형태**
