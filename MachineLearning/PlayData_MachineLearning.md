@@ -8,8 +8,6 @@ ananconda 가상환경 생성
 
 `conda activate tf24`
 
-![image](https://user-images.githubusercontent.com/84313936/207020816-5156432e-d8dc-4aef-b953-4cdebb551372.png)
-
 ### 텐서플로우 설치
 
 ****************************************************`**pip install tensorflow==2.4**`****************************************************
