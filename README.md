@@ -13,3 +13,6 @@ Today I Learned
 
 ### DataVisualization
 * [DataVisualization](https://github.com/KimHanWhee/TIL/tree/master/DataVisualization)
+
+### MachineLearning
+* [MachineLearning](https://github.com/KimHanWhee/TIL/tree/master/MachineLearning)
