@@ -1,5 +1,5 @@
 PlayData_MachineLearning (2022/12/12)
-####################################
+===========
 ananconda 가상환경 생성
 
 `conda create -n 파일이름 pip python=버전`
@@ -8,7 +8,7 @@ ananconda 가상환경 생성
 
 `conda activate tf24`
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7a0f7d5b-9b48-462d-80d6-2f2288cbc54b/Untitled.png)
+![image](https://user-images.githubusercontent.com/84313936/207020816-5156432e-d8dc-4aef-b953-4cdebb551372.png)
 
 ### 텐서플로우 설치
 
