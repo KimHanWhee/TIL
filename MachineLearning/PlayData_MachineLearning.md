@@ -1,4 +1,4 @@
-PlayData_MachineLearning (2022/12/12)
+PlayData_MachineLearning (2022/12/12 ~ 2022/12/15)
 ===========
 ananconda 가상환경 생성
 
@@ -86,8 +86,14 @@ ananconda 가상환경 생성
         - `predict()` : 예측
         - Classifier
             - 분류 모델 : 종류 예측
-        - Regressor
+        - Regression
             - 회귀 모델 : 값 예측
+        
+        <aside>
+        💡 LogisticRegression ⇒ 예외적으로 분류 모델이다.
+        
+        </aside>
+        
     
     ### LinearRgression
     
@@ -178,6 +184,63 @@ ananconda 가상환경 생성
     
     - 예측한 값을 `predict()` 로 얻은 뒤에 할당해 주어야함.
 
+## 분류
+
+## 회귀(Regression)
+
+**x에 대한 y의 값 예측**
+
+- 잔차(residual)이 최소가 되게 하는 것
+- 직선(기울기와 절편)을 잘 그리면 된다
+
+<aside>
+💡 **************************단순회귀**************************
+y = w1(기울기)x+w0(절편)
+
+**feature가 여러개가 되는 경우(다중회귀)**
+ ⇒ ****y = w1x1 + w2x2 + w3x3 + w4x4 + … + w0
+
+</aside>
+
+- **********************다항 회귀**********************
+    - PloynomialFeatures 이용
+        - 과적합 발생 가능성 높음
+- **다항 회귀 변경하는법 (PolynomialFeatures)**
+    
+    ```python
+    from sklearn.preprocessing import PolynomialFeatures
+    
+    poly = PolynomialFeatures(degree=2, include_bias=False)
+    poly.fit(X_train2D) # => 훈련값 할당 (2차원)
+    train_poly = poly.transform(X_train2D)
+    test_poly = poly.transform(X_test2D)
+    ```
+    
+- ****************손실함수(비용함수) ⇒ (cost function, loss function) → 경사하강법****************
+    - **MSE** : 제곱으로 계산 ⇒ **미분**이 가능하기 때문에 가장 많이 사용된다.
+    - **MAE** : 절대값으로 계산
+    - **R**2** : 결정계수
+    - ****************RMSE**************** : MSE에 루트를 씌운 것
+
+**특징**
+
+- **독립성** : feature들 간 독립적(**다중공선성** 문제발생) ⇒ 상관계수 이용
+- **정규성** : 정규분포따름 ⇒ hist이용
+- **선형성** ⇒ 시각화
+
+********평가********
+
+`lr.score()` ⇒ 분류알고리즘에서 사용했던 정확도가 아닌 R2(결정계수)이다.
+
+⇒ 생성된 모델이 얼마나 실제값이 잘 표현되었는지 알려주는 지표.
+
+<aside>
+❓ **회귀 알고리즘이 학습하는 것?**
+    ⇒ 기울기와 절편을 구하는 것이다.
+         `y= W1X + W0`
+
+</aside>
+
 ## 과적합
 
 **과대적합(overfitting)**
@@ -225,63 +288,11 @@ ananconda 가상환경 생성
 ### 규제(과대적합 방지)
 
 - **L2 규제(Ridge)**
-    - 회귀 계수 값은 **0으로 근접**. 값 결정에 미미함.
+    - 영향력이 낮은 feature들에 해당되는 회귀 계수 값을 **0으로 근접**. 값 결정에 미미함.
 - **L1 규제(Lasso)**
-    - 회귀 계수 값을 **0으로 만들어버림**.
+    - 영향력이 낮은 feature들에 해당되는 회귀 계수 값을 **0으로 만들어버림**.
 - **엘라스틱넷(elastic net)**
     - L2 + L1
-
-### 회귀(Regression)
-
-**x에 대한 y의 값 예측**
-
-- 잔차(residual)이 최소가 되게 하는 것
-- 직선(기울기와 절편)을 잘 그리면 된다
-
-<aside>
-💡 **************************단순회귀**************************
-y = w1(기울기)x+w0(절편)
-
-**feature가 여러개가 되는 경우(다중회귀)**
- ⇒ ****y = w1x1 + w2x2 + w3x3 + w4x4 + … + w0
-
-</aside>
-
-- **다항 회귀 변경하는법 (PolynomialFeatures)**
-    
-    ```python
-    from sklearn.preprocessing import PolynomialFeatures
-    
-    poly = PolynomialFeatures(degree=2, include_bias=False)
-    poly.fit(X_train2D) # => 훈련값 할당 (2차원)
-    train_poly = poly.transform(X_train2D)
-    test_poly = poly.transform(X_test2D)
-    ```
-    
-- ****************손실함수(비용함수) ⇒ (cost function, loss function) → 경사하강법****************
-    - **MSE** : 제곱으로 계산 ⇒ **미분**이 가능하기 때문에 가장 많이 사용된다.
-    - **MAE** : 절대값으로 계산
-    - **R**2** : 결정계수
-    - ****************RMSE**************** : MSE에 루트를 씌운 것
-
-**특징**
-
-- 독립성 : feature들 간 독립적 ⇒ 상관계수 이용
-- 정규성 : 정규분포따름 ⇒ hist이용
-- 선형성 ⇒ 시각화
-
-********평가********
-
-`lr.score()` ⇒ 분류알고리즘에서 사용했던 정확도가 아닌 R2(결정계수)이다.
-
-⇒ 생성된 모델이 얼마나 실제값이 잘 표현되었는지 알려주는 지표.
-
-<aside>
-❓ **회귀 알고리즘이 학습하는 것?**
-    ⇒ 기울기와 절편을 구하는 것이다.
-         `y= W1X + W0`
-
-</aside>
 
 ### KNN(K-Nearest Neighbors)
 
@@ -294,7 +305,63 @@ y = w1(기울기)x+w0(절편)
 - ********단점********
     - 데이터의 양이 맣아지면 분류 속도가 느려진다.
     - 차원(벡터)의 크기가 크면 계산량이 많아진다.
-    - 거리기반 알고리즘이기 때문에 반드시 ********************************데이터 표준화********************************를 해 주어야 한다.
+    - 거리 기반 알고리즘이기 때문에 반드시 ********************************데이터 표준화********************************를 해 주어야 한다.
+
+## 로지스틱 회귀(logistic regression)
+
+`**LogisticRegression(penalty='12', C=1.0)**`
+
+- 기본적으로 L2규제(Ridge)됨. 규제 강도는 C 파라미터 사용.
+- Ridge/Lasso 와 다르게 값이 작을수록 규제가 강해진다. 즉, 규제하면 할수록 0에 근사하는 feature들이 늘어난다.
+1. y = W1X + W0 으로 구함
+2. 회귀식에서 나온 값(예측값)
+3. 활성화 함수(activation function) : 확률갑(0~1) 압출 [음성확률, 양성확률] ⇒ 확률값의 총 합은 1
+    - 이진분류: sigmoid 함수
+    - 다중분류: softmax 함수 ⇒ 내부적으로 이진분류 여러번 시행.
+4. 확률값 중 더 큰값을 가진 class(종류)로 분류한다.
+
+<aside>
+💡 ********************함수종류********************
+
+비용(손실)함수 : 회귀에서의 평가 지표 ⇒ MSE, MAE, R2…
+최적의 기울기(가중치) 구함
+
+활성화 함수 : 선형 ⇒ 비선형, 임의의 값을 특정범위로 압출
+⇒ 시그모이드(sigmoid), 소프트 맥스(softmax), 렐루(ReLu)
+
+</aside>
+
+- 시그모이드(sigmoid)
+    
+    ```python
+    # 시그모이드 함수
+    from scipy.special import expit
+    expit(선형방정식 연산 값)
+    # 확률 출력
+    ```
+    
+- 소프트 맥스(Softmax)
+    - 값이 일정이상 크면 값을 더 크게 설정하게 만든다.
+- **predict_proba**(값)
+    - 넣어준 값에 대한 확률 출력, 다음 코드의 경우에는 [”Bream”, “Smelt”] 값들에 대한 확률이다.
+    
+    ```python
+    lr.predict_proba(X_test_bream_smelt)
+    '''
+                  ['Bream', 'Smelt']
+    ['Bream', 'Bream', 'Bream', 'Bream', 'Smelt', 'Bream', 'Bream', 'Bream', 'Smelt']
+    array([[9.99519284e-01, 4.80716220e-04], ==> Bream
+           [9.92393891e-01, 7.60610858e-03], ==> Bream
+           [9.94739349e-01, 5.26065097e-03], ==> Bream
+           [9.86879297e-01, 1.31207034e-02], ==> Bream
+           [2.94381468e-02, 9.70561853e-01], ==> Smelt
+           [9.81104791e-01, 1.88952091e-02], ==> Bream
+           [9.99386081e-01, 6.13918916e-04], ==> Bream
+           [9.94227953e-01, 5.77204706e-03], ==> Bream
+           [1.91841997e-02, 9.80815800e-01]])==> Smelt
+    '''
+    ```
+    
 
 ## 분류 알고리즘(종류 예측)
 
@@ -349,6 +416,7 @@ y = w1(기울기)x+w0(절편)
 - `sc = StandardScaled()`
     
     ```python
+    sc.fit(x_train) 
     sc.transform(x_train)
     sc.transform(x_test)
     sc.transform(new 값)
@@ -432,6 +500,8 @@ for i, (train_index, valid_index) in enumerate(kf.split(iris_data, iris_target))
 
 **cross_val_validate()**
 
+- 기본적으로 여러가지 데이터를 반환해줌
+
 ```python
 from sklearn.model_selection import cross_validate
 scores = cross_validate(dt, iris_data, iris_target, cv=5,
@@ -441,8 +511,21 @@ scores = cross_validate(dt, iris_data, iris_target, cv=5,
 
 **cross_val_score()**
 
+- test_score(검증 데이터)만 반환
+
 ```python
 from sklearn.model_selection import cross_val_score
 test_score = cross_val_score(dt, iris_data, iris_target, cv=5,
                             scoring="accuracy")
 ```
+
+## 평가 지표
+
+- ******분류******
+    - 정확도(accuracy)
+    - 정밀도(precision)
+    - 재현율(recall)
+- ******회귀******
+    - R2(결정계수
+    - MSE
+    - MAE
