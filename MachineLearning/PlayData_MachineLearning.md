@@ -307,62 +307,6 @@ y = w1(기울기)x+w0(절편)
     - 차원(벡터)의 크기가 크면 계산량이 많아진다.
     - 거리 기반 알고리즘이기 때문에 반드시 ********************************데이터 표준화********************************를 해 주어야 한다.
 
-## 로지스틱 회귀(logistic regression)
-
-`**LogisticRegression(penalty='12', C=1.0)**`
-
-- 기본적으로 L2규제(Ridge)됨. 규제 강도는 C 파라미터 사용.
-- Ridge/Lasso 와 다르게 값이 작을수록 규제가 강해진다. 즉, 규제하면 할수록 0에 근사하는 feature들이 늘어난다.
-1. y = W1X + W0 으로 구함
-2. 회귀식에서 나온 값(예측값)
-3. 활성화 함수(activation function) : 확률갑(0~1) 압출 [음성확률, 양성확률] ⇒ 확률값의 총 합은 1
-    - 이진분류: sigmoid 함수
-    - 다중분류: softmax 함수 ⇒ 내부적으로 이진분류 여러번 시행.
-4. 확률값 중 더 큰값을 가진 class(종류)로 분류한다.
-
-<aside>
-💡 ********************함수종류********************
-
-비용(손실)함수 : 회귀에서의 평가 지표 ⇒ MSE, MAE, R2…
-최적의 기울기(가중치) 구함
-
-활성화 함수 : 선형 ⇒ 비선형, 임의의 값을 특정범위로 압출
-⇒ 시그모이드(sigmoid), 소프트 맥스(softmax), 렐루(ReLu)
-
-</aside>
-
-- 시그모이드(sigmoid)
-    
-    ```python
-    # 시그모이드 함수
-    from scipy.special import expit
-    expit(선형방정식 연산 값)
-    # 확률 출력
-    ```
-    
-- 소프트 맥스(Softmax)
-    - 값이 일정이상 크면 값을 더 크게 설정하게 만든다.
-- **predict_proba**(값)
-    - 넣어준 값에 대한 확률 출력, 다음 코드의 경우에는 [”Bream”, “Smelt”] 값들에 대한 확률이다.
-    
-    ```python
-    lr.predict_proba(X_test_bream_smelt)
-    '''
-                  ['Bream', 'Smelt']
-    ['Bream', 'Bream', 'Bream', 'Bream', 'Smelt', 'Bream', 'Bream', 'Bream', 'Smelt']
-    array([[9.99519284e-01, 4.80716220e-04], ==> Bream
-           [9.92393891e-01, 7.60610858e-03], ==> Bream
-           [9.94739349e-01, 5.26065097e-03], ==> Bream
-           [9.86879297e-01, 1.31207034e-02], ==> Bream
-           [2.94381468e-02, 9.70561853e-01], ==> Smelt
-           [9.81104791e-01, 1.88952091e-02], ==> Bream
-           [9.99386081e-01, 6.13918916e-04], ==> Bream
-           [9.94227953e-01, 5.77204706e-03], ==> Bream
-           [1.91841997e-02, 9.80815800e-01]])==> Smelt
-    '''
-    ```
-    
-
 ## 분류 알고리즘(종류 예측)
 
 ### 1. 데이터 수집
@@ -373,9 +317,10 @@ y = w1(기울기)x+w0(절편)
 
 - **train_test_split**
 
-### 4. 스케일링(표준화 : StandardScale)
+### 4. 스케일링(표준화 : StandardScaler)
 
-- `sc = StandardScaled()`
+- `sc = StandardScaler()`
+    - 평균을 0, 분산을 1로 만들어줌
     
     ```python
     sc.transform(x_train)
@@ -529,3 +474,152 @@ test_score = cross_val_score(dt, iris_data, iris_target, cv=5,
     - R2(결정계수
     - MSE
     - MAE
+
+## 선형모델
+
+### 분류
+
+### 로지스틱 회귀(logistic regression)
+
+`**LogisticRegression(penalty='12', C=1.0)**`
+
+- 기본적으로 L2규제(Ridge)됨. 규제 강도는 C 파라미터 사용.
+- Ridge/Lasso 와 다르게 값이 작을수록 규제가 강해진다. 즉, 규제하면 할수록 0에 근사하는 feature들이 늘어난다.
+1. y = W1X + W0 으로 구함
+2. 회귀식에서 나온 값(예측값)
+3. 활성화 함수(activation function) : 확률갑(0~1) 압출 [음성확률, 양성확률] ⇒ 확률값의 총 합은 1
+    - **이진분류**
+        - **시그모이드(sigmoid)**
+            - 활성화 함수
+            
+            ```python
+            # 시그모이드 함수
+            from scipy.special import expit
+            expit(선형방정식 연산 값)
+            # 확률 출력
+            ```
+            
+    - **다중분류**
+        - **소프트 맥스(Softmax)**
+            - 활성화 함수
+            - 값이 일정이상 크면 값을 더 크게 설정하게 만든다.
+            - 내부적으로 이진분류 여러번 시행.
+        - **********확률**********
+            - Probability: 0~1 (경우의 수)
+            - Stochastic: 랜덤, 무작위
+    - **용도**
+        - 비선형
+        - 특정 범위로 Data압축할 때 ⇒ 0~1
+4. 확률값 중 더 큰값을 가진 class(종류)로 분류한다.
+
+<aside>
+💡 ********************함수종류********************
+
+비용(손실)함수 : 회귀에서의 평가 지표 ⇒ MSE, MAE, R2…
+최적의 기울기(가중치) 구함
+
+활성화 함수 : 선형 ⇒ 비선형, 임의의 값을 특정범위로 압출
+⇒ 시그모이드(sigmoid), 소프트 맥스(softmax), 렐루(ReLu)
+
+</aside>
+
+- **predict_proba**(값)
+    - 넣어준 값에 대한 확률 출력, 다음 코드의 경우에는 [”Bream”, “Smelt”] 값들에 대한 확률이다.
+    
+    ```python
+    lr.predict_proba(X_test_bream_smelt)
+    '''
+                  ['Bream', 'Smelt']
+    ['Bream', 'Bream', 'Bream', 'Bream', 'Smelt', 'Bream', 'Bream', 'Bream', 'Smelt']
+    array([[9.99519284e-01, 4.80716220e-04], ==> Bream
+           [9.92393891e-01, 7.60610858e-03], ==> Bream
+           [9.94739349e-01, 5.26065097e-03], ==> Bream
+           [9.86879297e-01, 1.31207034e-02], ==> Bream
+           [2.94381468e-02, 9.70561853e-01], ==> Smelt
+           [9.81104791e-01, 1.88952091e-02], ==> Bream
+           [9.99386081e-01, 6.13918916e-04], ==> Bream
+           [9.94227953e-01, 5.77204706e-03], ==> Bream
+           [1.91841997e-02, 9.80815800e-01]])==> Smelt
+    '''
+    ```
+    
+
+### 회귀
+
+### LinearRegression
+
+### ************확률적 경사하강법 모델************
+
+- **확률적 경사하강법, SGDclassifier (Stochastic Gradient Descent)**
+    - scikit-learn 제공
+    - 무작위로 Data를 **하나씩** 추출해서 훈련하는 모델
+    - `loss = "log-loss" (1.1버전에서는 log)` ⇒ cross entropy, loss
+    - `learning-rate` ⇒ **학습율**, 그래프상에서 보폭 역할
+        - 보폭이 작으면 시간이 오래 걸림, 반대로 너무 크면 최적의값을 그냥 지나쳐 버릴 수도 있다.
+        - 미분이용
+- **미니 배치 경사하강법**
+    - 무작위로 Data를 **여러개**를 묶음으로 ****추출해서 훈련하는 모델
+    - batch size는 적절한 그기가 성능에 좋다.
+- **배치 경사하강법**
+    - Data를 **전부** 추출해서 훈련하는 모델
+
+<aside>
+💡 **경사하강법 알고리즘
+y = w1 * x + w0
+⇒** 손실함수(loss function)가 반환되는 값(잔차)이 최소가 되는 경우
+
+</aside>
+
+### 손실 함수(loss function)
+
+- ********분류********
+    - **이진분류: 이진 크로스 엔트로피(binary cross entropy)**
+    - **다중분류: 크로스 엔트로피 (cross entropy)**
+- ********회귀********
+    - **MAE**
+    - **MSE**
+- **max_iter** = epoch 반복 횟수
+    - 내부적으로 성능이 좋아지지 않으면(loss값이 더 이상 작아지지않는 경우) 중단된다.
+    
+    <aside>
+    💡 기준?
+    loss > best_los - tol (허용 오차)
+    * tol=None 지정 시 무조건 반복횟수 만큼 실행됨
+    * early stopping ⇒ 어떤 모델들은 훈련중에  loss값이 더 이상 나아지지 않으면 중간에 중단시키는 모델이 있다.
+    
+    </aside>
+    
+
+## 분류 평가 지표
+
+- **이진분류**
+    - ****0: (음성, negative)****
+    - ****1: (양성, positive)****
+- ********************오차행렬(confusion matrix) 이용********************
+    
+    ![image](https://user-images.githubusercontent.com/84313936/208068786-0fb6a464-ae80-49bf-bd48-baedf3eacae5.png)
+
+    
+    - **정확도(accuracy_score)**
+        - 일치한 개수 / 전체Data = TN + TP / TN + FP + FN + TP
+    - **정밀도(precision_score)**
+        - 예측값과 실제값이 양성으로 일치한 개수 / 양성으로 예측한 값 = TP / TP + FP
+    - **재현율(recall_score)**
+        - 예측값과 실제값이 양성으로 일치한 개수 / 실제값이 양성인 개수 = TP / TP + FN ⇒ 업무상 리스크가 매우 크다.
+    - **조화 평균(F1 Score)**
+        - 정밀도와 재현율이 조화로운지
+        
+        <aside>
+        💡 정확도, 정밀도, 재현율은 클 수록 좋다.
+        
+        </aside>
+        
+
+### 신뢰 레벨 (confidence score)
+
+- 낮을수록 **덜** 엄격해짐
+    - 정밀도 down
+    - 재현율 down
+- 높을수록 **더** 엄격해짐
+    - 정밀도 up
+    - 재현율 down
