@@ -1,4 +1,4 @@
-PlayData_MachineLearning (2022/12/12 ~ 2022/12/15)
+PlayData_MachineLearning (2022/12/12 ~ 2022/12/16)
 ===========
 ananconda 가상환경 생성
 
