@@ -16,3 +16,6 @@ Today I Learned
 
 ### MachineLearning
 * [MachineLearning](https://github.com/KimHanWhee/TIL/tree/master/MachineLearning)
+
+### MySQL
+* [MySQL](https://github.com/KimHanWhee/TIL/tree/master/MySQL)
