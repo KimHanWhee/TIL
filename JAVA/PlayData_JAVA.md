@@ -23,4 +23,41 @@ PlayData_JAVA
 
 # Class
 
-# DB 연결
+```java
+public class 클래스명{
+	// 필드
+}
+```
+
+# DB 연결 (MySQL)
+
+### DBConnection
+
+```java
+package db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+	private Connection conn;
+	private final String id = "test";
+	private final String password = "1234";
+	private final String url = "jdbc:mysql://localhost:3306/test";
+	
+	public DBConnection() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(url, id, password);
+			System.out.println("연동 성공");
+		} catch (Exception e) {
+			System.out.println("연동 실패");
+		}
+	}
+
+	public Connection getConn() {
+		return conn;
+	}
+	
+}
+```
