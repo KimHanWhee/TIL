@@ -1,6 +1,3 @@
-TCP
-======================
-
 # JAVA Client & Server TCP 통신
 
 # TCP
